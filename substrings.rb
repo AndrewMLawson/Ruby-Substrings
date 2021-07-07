@@ -1,13 +1,16 @@
-def substrings(searchWord, wordArray)
-    theHash = {}
-    p wordArray
-    wordArray.each do |item|
-        if searchWord.include?(item)
-            theHash[item] = searchWord.count(item)
-            p "new key created!"
+require 'pry'
+
+def substrings(searchPhrase, dictionary)
+    count = {}
+    splitSearch = searchPhrase.downcase.split(" ")
+    p splitSearch
+    dictionary.each do |item|
+        matchingArray = splitSearch.select {|searchItem| searchItem.include?(item)}
+        if matchingArray.length > 0
+            count[item] = matchingArray.length
         end
     end
-    p theHash
+    p count
 end
 
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
